@@ -10,6 +10,7 @@ import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
 import { FaUserAlt } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 interface headerproos {
   children: React.ReactNode;
   className?: string;
@@ -26,7 +27,10 @@ const Header: React.FC<headerproos> = ({ children, className }) => {
     // TODO : any song is playing
     router.refresh();
     if (error) {
-      console.log(error);
+     toast.error(error.message)
+    }
+    else{
+      toast.success('Logout Successfully')
     }
   };
   return (
@@ -65,8 +69,8 @@ const Header: React.FC<headerproos> = ({ children, className }) => {
               <Button onClick={handlelogout} className=" bg-white px-6 py-2">
                 Logout
               </Button>
-              <Button>
-                <FaUserAlt/>
+              <Button onClick={()=> router.push('/account')} className="bg-white">
+                <FaUserAlt />
               </Button>
             </div>
           ) : (
