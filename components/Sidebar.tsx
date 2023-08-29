@@ -7,12 +7,14 @@ import Box from "./Box";
 import SidebarItem from "./SidebarItem";
 import Library from "./Library";
 import Modal from "./Modal";
+import { Song } from "@/types";
 
 interface sidebarprops {
+  songs:Song[]
   children: React.ReactNode;
 }
 // console.log("hello World")
-const Sidebar: React.FC<sidebarprops> = ({ children }) => {
+const Sidebar: React.FC<sidebarprops> = ({ children ,songs}) => {
  
   const pathname = usePathname();
   const routes = useMemo(
@@ -43,7 +45,7 @@ const Sidebar: React.FC<sidebarprops> = ({ children }) => {
             ))}
           </div>
         </Box>
-        <Box classname=" overflow-y-auto h-full"> <Library/> </Box>
+        <Box classname=" overflow-y-auto h-full"> <Library songs={songs} /> </Box>
       </div>
       <main className=" h-full flex-1 overflow-auto py-2">
         {children}
