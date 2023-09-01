@@ -10,7 +10,7 @@ interface songitemprops {
   onClick: (id: string) => void;
 }
 
-const Songitem: React.FC<songitemprops> = ({ data, onClick }) => {
+const SongItem: React.FC<songitemprops> = ({ data, onClick }) => {
   const imagepath = useLoadImage(data);
 
   return (
@@ -40,4 +40,4 @@ const Songitem: React.FC<songitemprops> = ({ data, onClick }) => {
   );
 };
 
-export default Songitem;
+export default SongItem;

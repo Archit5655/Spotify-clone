@@ -6,13 +6,17 @@ import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal";
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
+import useOnplay from "@/hooks/useOnplay";
+
 interface librabryprops {
   songs: Song[];
 }
 const Library: React.FC<librabryprops> = ({ songs }) => {
   const authMOdal = useAuthModal();
   const { user } = useUser();
+ 
   const UploadModal = useUploadModal();
+  const onplay = useOnplay(songs );
   const Onclick = () => {
     if (!user) {
       return authMOdal.onOpen();
@@ -37,8 +41,12 @@ const Library: React.FC<librabryprops> = ({ songs }) => {
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((item) => (
-          <div>
-            <MediaItem onClick={() => {}} key={item.id} data={item} />
+          <div key={item.id}>
+            <MediaItem
+              key={item.id}
+              data={item}
+         
+            />
           </div>
         ))}
       </div>
