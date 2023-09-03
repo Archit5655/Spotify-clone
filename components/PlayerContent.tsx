@@ -1,4 +1,5 @@
 "use client";
+import useSound from "use-sound";
 import LikeButton from "@/components/LikeButton";
 import MediaItem from "@/components/MediaItem";
 import { Song } from "@/types";
@@ -8,8 +9,7 @@ import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import Slider from "./Slider";
 import usePlayer from "@/hooks/usePlayer";
-// @ts-ignore
-import useSound from "use-sound";
+
 
 interface playerconstextprops {
   song: Song;
