@@ -76,7 +76,7 @@ const Header: React.FC<headerproos> = ({ children, className }) => {
             <BiSearch size={30} className=" text-black"  />
           </button>
    </Link>
-   <button onClick={uploadmodal.onOpen}  className=" px-4 rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
+   <button onClick={uploadmodal.onOpen}  className="  rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
 <AiOutlinePlus   size={30} className=" text-black " />
 
 
