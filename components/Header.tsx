@@ -3,6 +3,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { HiHome } from "react-icons/hi";
+import { AiOutlinePlus } from "react-icons/ai";
+
 import { BiSearch } from "react-icons/bi";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import Button from "./Button";
@@ -11,16 +13,22 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
 import { FaUserAlt } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import Sidebar from "./Sidebar";
+import useUploadModal from "@/hooks/useUploadModal";
+import Link from "next/link";
+import UploadModal from "./UploadModal";
 interface headerproos {
   children: React.ReactNode;
   className?: string;
 }
 const Header: React.FC<headerproos> = ({ children, className }) => {
   const authModal = useAuthModal();
+  const uploadmodal=useUploadModal();
 
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
+
 
   const handlelogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
@@ -56,12 +64,23 @@ const Header: React.FC<headerproos> = ({ children, className }) => {
           </button>
         </div>
         <div className="flex md:hidden gap-x-2 items-center">
-          <button className=" rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
+          <Link href='/'>
+          <button className=" rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition" >
             <HiHome size={30} className=" text-black" />
           </button>
-          <button className=" rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
-            <BiSearch size={30} className=" text-black" />
+          </Link>
+          
+         
+   <Link href='/search'>
+     <button className=" rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
+            <BiSearch size={30} className=" text-black"  />
           </button>
+   </Link>
+   <button onClick={uploadmodal.onOpen}  className=" rounded-full p-2 bg-white flex items-center justify-center hover:opacity-60 transition">
+<AiOutlinePlus   size={30} className=" text-black " />
+
+
+   </button>
         </div>
         <div className=" flex justify-between items-center gap-x-4">
           {user ? (
