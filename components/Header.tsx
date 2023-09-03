@@ -69,7 +69,7 @@ const Header: React.FC<headerproos> = ({ children, className }) => {
               <Button onClick={handlelogout} className=" bg-white px-6 py-2">
                 Logout
               </Button>
-              <Button onClick={()=> router.push('/account')} className="bg-white">
+              <Button onClick={()=> router.push('/')} className="bg-white">
                 <FaUserAlt />
               </Button>
             </div>
